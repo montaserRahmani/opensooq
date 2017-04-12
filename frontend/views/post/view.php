@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title); ?></h1>
 
-    <p>
+    <p> <?php if(!Yii::$app->user->isGuest) { ?>
         <?= Yii::$app->user->getId() == $model->user_id || Yii::$app->user->identity->isAdmin? Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) : ''  ?>
 
         <?= Yii::$app->user->getId() == $model->user_id || Yii::$app->user->identity->isAdmin?
@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?php if(Yii::$app->user->identity->isAdmin){ ?>
         <span>(Admin)</span> 
-        <?php } ?>
+        <?php }} ?>
     </p>
 
     <?= DetailView::widget([
