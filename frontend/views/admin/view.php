@@ -25,6 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]): '' ?>
+
         <?php if(Yii::$app->user->identity->isAdmin){ ?>
         <span>(Admin)</span> 
         <?php } ?>
@@ -37,8 +38,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'description:ntext',
             [
-                'label'=>'Category',
-                'value'=>$model->getCategoryName($model->cat_id),
+                'attribute'=> 'Category',
+                'value'=> $model->category->name,
+            ],
+            [
+                'attribute'=> 'By',
+                'value'=> $model->username->username,
             ]
         ],
     ]) ?>

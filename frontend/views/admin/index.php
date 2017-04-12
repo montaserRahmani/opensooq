@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $duplicates,
         'columns' => [
             'title',
-            'description',   
+            'description',
         ],
     ]); ?>
 

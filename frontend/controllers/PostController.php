@@ -47,8 +47,9 @@ class PostController extends Controller
      */
     public function actionView($id)
     {
+        $model = Post::find()->where(['id' => $id])->with('category', 'username', 'postTags')->one();
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 
