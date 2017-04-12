@@ -76,7 +76,8 @@ class SiteController extends Controller
     public function actionIndex()
     {   
         //getting post data with its relations
-        $data = Post::find()->with('category', 'username', 'postTags')->asArray()->all();
+        $data = Post::find()->with('category', 'username', 'postTags')
+        ->orderBy(['id' => SORT_DESC])->asArray()->all();
         $tags = PostTag::find()->groupBy('tag_id')->with('tag')->asArray()->all();
 
         return $this->render('index', [
@@ -225,16 +226,8 @@ class SiteController extends Controller
     {   
         //getting post data with its relations
         $data = PostTag::find()->where(['tag_id' => $id])->with('tag')->with('post')
-            ->with([
-                'post.category' => function ($query) {
-                    return $query->select('name');
-                }
-            ])
-            ->with([
-                'post.username' => function ($query) {
-                    return $query->select('username');
-                }
-            ])
+            ->with('post.category')
+            ->with('post.username')
             ->with('post.postTags')->asArray()->all();
 
         return $this->render('tags', [

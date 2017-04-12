@@ -34,6 +34,7 @@ class Post extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['title', 'description'], 'required'],
             [['description'], 'string'],
             [['cat_id'], 'integer'],
             [['title'], 'string', 'max' => 255],

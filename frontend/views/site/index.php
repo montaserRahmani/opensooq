@@ -9,7 +9,8 @@ $this->title = 'Posts Blog';
 
 ?>
 <div class="site-index">
-
+<div class="row text-center" style="background-color: #f5f5f5; padding: 20px"><a href=<?php echo Url::base()."/post/create" ?> >
+<h2>Create a new post now</h2></a></div>
     <div class="row">
         <div class="col-xs-12">
         <div class="page-header">
@@ -18,7 +19,7 @@ $this->title = 'Posts Blog';
             <p style="font-size: 15pt;"> <?php 
                 $temp = [];
                 foreach ($tags as $tagRow) {
-                    $temp[]= '<a href="'.Url::base().'/site/tags?id='.$tagRow['id'].'">'.$tagRow['tag']['text'].'</a>';
+                    $temp[]= '<a href="'.Url::base().'/site/tags?id='.$tagRow['tag']['id'].'">'.$tagRow['tag']['text'].'</a>';
                 }
                 echo implode(", ", $temp);
                 ?></p>

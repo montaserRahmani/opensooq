@@ -35,7 +35,7 @@ use frontend\models\Post;
                 <li class="list-group-item"><b>Tags :</b> <?php 
                 $tags = [];
                  foreach ($p['post']['postTags'] as $tagRow) {
-                    $tags[]= '<a href="?id='.$tagRow['id'].'">'.$tagRow['tag']['text'].'</a>';
+                    $tags[]= '<a href="?id=1">'.$tagRow['tag']['text'].'</a>';
                  }
                  echo implode(", ", $tags);
                  ?></li>
@@ -49,7 +49,7 @@ use frontend\models\Post;
         <?php } ?>
     </div>
 
-    <?php } else { ?>
+    <?php } else { var_dump($data) ?>
       <h3>Sorry we couldn't find any results</h3>
     <?php } ?>
 </div>
